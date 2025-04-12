@@ -3,43 +3,41 @@
 theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+# background: https://cover.sli.dev
+layout: cover
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: 语义化版本知识分享
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  semantic versioning
 # apply unocss classes to the current slide
 class: text-center
+css: unocss
+highlighter: shiki
+colorSchema: dark
+glowSize: 1.5
 # https://sli.dev/features/drawing
 drawings:
-  persist: false
+  persist: true
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
+transition: fade-out
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
+
 # open graph
 # seoMeta:
 #  ogImage: https://cover.sli.dev
 ---
 
-# Welcome to Slidev
+# 语义化版本(semver)知识分享
 
-Presentation slides for developers
-
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
+zhangshilong12
+<div uppercase text-sm tracking-widest>
+Long Mo
 </div>
 
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
+<div abs-br mx-13 my-12 flex="~ col" text-sm text-left>
+  <div>web 前端</div>
+  <div text-sm opacity-50>20250412</div>
 </div>
 
 <!--
@@ -47,72 +45,97 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
-transition: fade-out
+layout: intro
+mdc: true
 ---
 
-# What is Slidev?
+### 但是！{.op50.mb-2.ml5}
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+## 「特例化」也不是坏事 {v-click}
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
+<v-click>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+#### [扩大]{.op50}[「交集」]{.text-purple} []{.inline-block.i-gis-intersection.translate-y-1/10.text-purple}
+
+</v-click>
+
+<v-click>
+
+#### [寻找]{.op50} [「并集」]{.text-lime} []{.inline-block.i-gis-union.translate-y-1/10.text-lime}
+
+</v-click>
+
+---
+mdc: true
+---
+
+这是一个 [红色的文本]{style="color:red"} :inline-component{prop="value"}
+
+
+::block-component{prop="value"}
+**default** 插槽的内容
+::
+
+---
+transition: fade-out
+
+layout: center
+glowX: 50
+glowY: 0
+---
+
+# 什么是语义化版本(semver)?
+
+<v-clicks>
+
+- 全称：semantic versioning
+- **语义化版本** 不仅仅局限于前端开发，而是一个广泛应用于软件管理领域的一个概念
+- 一种为了确保软件版本号能够清晰、准确地传达软件变更信息而制定的版本**编号规则**。
+
+</v-clicks>
 
 <!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
+这套版本编号系统不仅适用于各种编程语言编写的应用程序，也同样适用于库、框架等软件包的版本控制。
+
+无论是前端JavaScript库、后端服务、移动应用还是桌面软件，任何类型的软件项目都可以采用语义化版本来规范其发布周期和版本号的递增逻辑，
+
+从而促进项目的可持续维护以及与其他软件系统的兼容性和依赖性管理。
 -->
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
+---
+layout: quote
+class: text-center
+---
 
-<!--
-Here is another comment.
--->
+# 为什么要使用语义化版本?
 
 ---
 transition: slide-up
 level: 2
 ---
 
-# Navigation
+# 作用
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
 
-## Keyboard Shortcuts
+语义化版本是为了解决版本管理中存在的一些问题，
 
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
+比如版本号递增，版本号冲突，版本号不兼容等,
 
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+从而提高软件项目的可维护性、依赖管理和用户信任度
+
+<!--
+清晰传达变更的性质：通过主版本号、次版本号和修订号的变化，可以明确地向用户传达本次更新是包含重大更改（可能需要用户调整自己的代码）、新增功能还是仅仅修复了一些bug。这有助于用户快速了解升级可能带来的影响。
+
+简化依赖管理：在复杂的软件生态系统中，一个项目往往依赖于多个库或包。语义化版本允许开发者指定兼容版本范围，例如^1.2.3表示接受任何不改变主版本号的更新。这有助于自动化工具选择合适的依赖版本，减少因依赖问题导致的冲突或错误。
+
+提升用户信任度：遵循统一的版本编号规则可以帮助用户建立对项目的信任。当用户知道项目严格遵守语义化版本控制时，他们能更有信心地进行升级操作，因为他们可以根据版本号预判升级的风险和工作量。
+
+促进协作：在一个团队或者开源社区内，使用语义化版本可以帮助所有参与者更好地理解项目的进展和变化。它提供了一种标准化的语言来描述软件的发展状态，有助于沟通和协调工作。
+
+支持自动化流程：许多CI/CD（持续集成/持续部署）流水线和依赖管理系统都支持基于语义化版本的工作流。这意味着可以更容易实现自动化测试、构建和发布过程，进一步加速开发周期。
+
+增强生态系统的稳定性：在整个软件生态系统中广泛采用语义化版本有助于保持整个生态系统的稳定性和健康性。它减少了由于不兼容更新导致的问题，促进了不同软件之间的互操作性和长期维护。
+-->
 
 ---
 layout: two-cols
@@ -124,9 +147,10 @@ layoutClass: gap-16
 You can use the `Toc` component to generate a table of contents for your slides:
 
 ```html
-<Toc minDepth="1" maxDepth="1" />
-```
 
+<Toc minDepth="1" maxDepth="1"/>
+```
+{Vite} {Vue} {Nuxt} 核心团队成员<br>
 The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
 
 ::right::
@@ -147,7 +171,7 @@ Use code snippets and get the highlighting directly, and even types hover!
 // and errors in markdown code blocks
 // More at https://shiki.style/packages/twoslash
 
-import { computed, ref } from 'vue'
+import {computed, ref} from 'vue'
 
 const count = ref(0)
 const doubled = computed(() => count.value * 2)
@@ -193,9 +217,11 @@ level: 2
 
 # Shiki Magic Move
 
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
+Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code
+snippets.
 
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
+Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move.
+For example:
 
 ````md magic-move {lines: true}
 ```ts {*|2|*}
@@ -270,10 +296,12 @@ const author = {
 
 You can use Vue components directly inside your slides.
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your
+custom components is also super easy.
 
 ```html
-<Counter :count="10" />
+
+<Counter :count="10"/>
 ```
 
 <!-- ./components/Counter.vue -->
@@ -285,7 +313,8 @@ Check out [the guides](https://sli.dev/builtin/components.html) for more.
 <div>
 
 ```html
-<Tweet id="1390115482657726468" />
+
+<Tweet id="1390115482657726468"/>
 ```
 
 <Tweet id="1390115482657726468" scale="0.65" />
@@ -309,7 +338,8 @@ class: px-20
 
 # Themes
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for
+tools. Switching between themes by just **one edit** in your frontmatter:
 
 <div grid="~ cols-2 gap-2" m="t-2">
 
@@ -345,6 +375,7 @@ You can add `v-click` to elements to add a click animation.
 This shows up when you click the slide:
 
 ```html
+
 <div v-click>This shows up when you click the slide.</div>
 ```
 
@@ -378,14 +409,15 @@ also allows you to add
 Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
 
 ```html
+
 <div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
+		v-motion
+		:initial="{ x: -80 }"
+		:enter="{ x: 0 }"
+		:click-3="{ x: 80 }"
+		:leave="{ x: 1000 }"
 >
-  Slidev
+	Slidev
 </div>
 ```
 
@@ -549,12 +581,14 @@ database "MySql" {
 
 </div>
 
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
+Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid)
+and [PlantUML Diagrams](https://sli.dev/features/plantuml)
 
 ---
 foo: bar
 dragPos:
-  square: 691,32,167,_,-16
+square: 691,32,167,_,-16
+square: 691,32,167,_,-16
 ---
 
 # Draggable Elements
@@ -610,8 +644,8 @@ Slidev provides built-in Monaco Editor support.
 Add `{monaco}` to the code block to turn it into an editor:
 
 ```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
+import {ref} from 'vue'
+import {emptyArray} from './external'
 
 const arr = ref(emptyArray(10))
 ```
@@ -619,8 +653,8 @@ const arr = ref(emptyArray(10))
 Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
 
 ```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
+import {version} from 'vue'
+import {emptyArray, sayHello} from './external'
 
 sayHello()
 console.log(`vue ${version}`)
