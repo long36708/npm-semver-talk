@@ -73,44 +73,50 @@ Working at HikVision<br>
 ---
 layout: center
 glow: bottom
+glowX: 50
+glowY: 120
 ---
 
 # 引言
 
 <div grid="~ cols-[1fr_max-content_1fr] gap-4" mt2>
-<div w-60 text-10em i-devicon-npm-wordmark></div>
-<div v-click w-60 text-10em i-logos-pnpm></div>
 
-<div v-click>
-```json 
-{
-  "name": "npm-semver-talk",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
-  },
-  "dependencies": {
-    "@iconify/json": "^2.2.326",
-    "@slidev/cli": "^51.5.0",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "unocss": "66.0.0",
-    "vue": "^3.5.13"
+<div flex="~ col items-center justify-center">
+  <div v-click text-10em i-devicon-npm-wordmark/>
+  <v-clicks at="4">
+   <div leading-10> 语义化版本和依赖版本的区别？ </div>
+   <div ml-6 leading-10> ^1.0.0、 ~1.0.0、>=1.0.0有什么区别？</div>
+   <div leading-10>  指定版本和安装版本一定相同吗？ </div>
+  </v-clicks>
+</div>
+<div v-click w-60 text-10em i-logos-pnpm/>
+
+  <div v-click>
+
+  ```json 
+  {
+    "name": "npm-semver-talk",
+    "type": "module",
+    "private": true,
+    "scripts": {
+      "build": "slidev build",
+      "dev": "slidev --open",
+      "export": "slidev export"
+    },
+    "dependencies": {
+      "@iconify/json": "^2.2.326",
+      "@slidev/cli": "^51.5.0",
+      "@slidev/theme-default": "latest",
+      "@slidev/theme-seriph": "latest",
+      "unocss": "66.0.0",
+      "vue": "^3.5.13"
+    }
   }
-}
-```
-</div>
+  ```
 
+  </div>
 </div>
-
-<v-clicks>
-<div leading-10> ^1.0.0 、~1.0.0 、 >=1.0.0 有什么区别？ </div>
-<div leading-10> 指定版本和安装版本一定相同吗？ </div>
-<div leading-10> 语义化版本和依赖版本的区别？ </div>
-</v-clicks>
+<!-- 上方内容 end-->
 
 ---
 
@@ -142,12 +148,100 @@ glow: bottom
 </v-click>
 
 ---
+layout: fact
+glow: left
+---
+
+# 什么是`语义化版本`?{.important-text-3em}
+
+---
+layout: iframe-left
+url: https://semver.org/lang/zh-CN/
+transition: fade-out
+---
+
+## 语义化版本控制规范
+
+<div mt-4/>
+
+<v-clicks depth="2">
+
+- `X.Y.Z` 
+  - 主版本号
+  - 次版本号
+  - 修订版本号
+- 任何修改都必须以新版本发行
+  - 版本只能增加，不能减少
+  - 1.8.9 -> 1.8.10
+- x一般从0开始，表示还未发布的版本
+    - 一旦发布正式版，则需要[将主版本改为1](https://docs.npmjs.com/about-semantic-versioning) 
+- 每一次增加高位的版本，低位的都要清零
+    - 1.8.2 -> 1.9.0
+    - 1.8.2 -> 2.0.0
+  
+> 1.2.0.1 不是一个有效的语义化版本
+
+</v-clicks>
+
+---
+layout: two-cols-header
+---
+
+# 预发布版本
+
+<v-clicks>
+
+- 预发布版本（一般为希腊字母版本或日期版本号）
+- 常见字母版本号为 `canary`、`dev`、`alpha`、`beta`、`rc`、`release`
+- 预发布版本又称"不稳定版本",一般不可用于生产环境
+  
+</v-clicks>
+
+::left::
+
+<img v-click src="/vue-pre-releases.png" scale-150 w-full mt--6>
+
+::right::
+
+<img v-click src="/react-pre-releases.png" scale-150 w-full >
+
+
+---
+
+# 语义化版本号比较时的基本原则
+
+<v-clicks>
+
+- 主版本号优先：首先比较主版本号。如果一个版本的主版本号大于另一个版本的主版本号，则该版本被视为更大。
+- 次版本号其次：如果两个版本的主版本号相同，则比较次版本号。次版本号较大的版本被视为更大。
+- 修订号最后：如果两个版本的主版本号和次版本号都相同，则比较修订号。修订号较大的版本被视为更大。
+
+- 对于带有预发布标识（如 -alpha, -beta 等）的版本，其比较规则稍微复杂一些。
+  - 预发布版本总是被认为小于没有预发布标识的相同版本。
+  - 在预发布标识中，数字部分会被视为数值进行比较。
+  
+</v-clicks>
+<div v-click scale-150 mx-20 mt-8 px-20>
+
+```
+1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta 
+< 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.10
+< 1.0.0-rc.1 < 1.0.0 < 2.0.0-alpha 
+```
+
+</div>
+
+<div mt-6 text-red mx-10 v-click> 注意这里的 .10 实际上是比 .2 更大的，尽管按字典顺序看起来不是这样,如果要在代码或脚本中比较语义化版本号，可以使用像   <b text-yellow>semver</b> 这样的库来进行比较</div>
+
+
+
+---
 transition: fade-out
 layout: center
 glowX: 50
 glowY: 0
 ---
-      
+ 
 # 什么是语义化版本(semver)?
 
 <v-clicks at="4">
@@ -496,8 +590,8 @@ glowY: 120
 layout: center
 class: text-center
 ---
-  
-# case 4
+
+# case 4 
 
 <div flex="~ cols-[max-content_1fr]" class="text-xl">
 
@@ -536,7 +630,6 @@ class: text-center
 </div>
 
 <div mt-4 v-click> 0.21.1 、0.21.2 、0.21.3 ... </div>
-
 
 ---
 layout: center
@@ -605,6 +698,15 @@ npm version patch
 ![](/bumpp.png){.w-90.contrast-110}
 
 </v-click>
+
+---
+layout: iframe-right
+src: https://regex101.com/r/vkijKf/1/
+---
+
+::left::
+
+left
 
 ---
 layout: center
