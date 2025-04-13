@@ -131,15 +131,15 @@ glow: bottom
 
 </div>
 
-<img v-click="4" src="/dependency-version.png" my2 rounded absolute top-48 w="80%" left-30/>
+<img v-click="4" src="/dependency-version.png" my2 rounded absolute top-42 w="80%" left-30/>
 
-<v-click at="5">
+<v-click at="5" >
+<div absolute right-45>
 
 `"包名":"版本范围"`
 
+</div>
 </v-click>
-
-<div v-click="6"> 版本范围</div>
 
 ---
 transition: fade-out
@@ -211,27 +211,29 @@ scale: 0.6
 
 ---
 layout: default
-layoutClass: important-p20 
+layoutClass: important-p20
 ---
-  
+
 # 版本范围 <sub op-50>Version Range</sub>
 
 <div grid="~ cols-2 gap-4" >
+
 ```shell
-npm install --save axios
+npm install --save vue
 ```
+
 </div>
 
 <Arrow  v-click x1="200" y1="150" x2="200" y2="360" />
 <div v-click class='abs left-200 top-200'> latest </div>
-<div v-click abs x-200 y-300> ^1.2.3 </div>
+<div v-click abs x-200 y-300> ^3.5.13 </div>
 
 <div grid="~ cols-2 gap-4" mt-40>
 
 ```json
 {
   "dependencies": {
-    "axios": "^1.2.3"
+    "vue": "^3.5.13"
   }
 }
 ```
@@ -244,7 +246,7 @@ layout: center
 ---
 
 <h2> 
- <span class="text-orange-500 font-bold">^</span>1.2.3
+ <span class="text-orange-500 font-bold">^</span>3.5.13
 </h2>
 
 <div>
@@ -270,8 +272,9 @@ layout: two-cols-header
 
 ```json
 {
-"dependencies": {
-  "vue": "^3.5.13"
+	"dependencies": {
+		"vue": "^3.5.13"
+	}
 }
 ```
 
@@ -283,7 +286,7 @@ npm install
 
 不考虑lock文件的情况下
 
-```ts
+```text
 node_modules
  └── vue@3.5.14
 ```
@@ -314,7 +317,7 @@ node_modules
 
 不会！！！
 
-```ts
+```text
 node_modules
  └── vue@3.5.14
 ```
@@ -504,16 +507,22 @@ class: text-center
  axios 0.21.1 -> 0.30.0
 </div>
 
-</div>
+<div flex="~ col items-center justify-center">
 
-<div mt-4>
+ <div v-click class='absolute left-95 top-76' > latest </div>
+ <div v-click class='absolute left-95 top-68'> ^3.5.14 </div>
+
+ <Arrow  v-click x1="340" y1="350" x2="480" y2="350" />
+
+</div>
+<div mt-40/>
+
 ```json
 {
   "dependencies": {
     "axios": "^0.21.1"
   }
 }
-
 ```
 </div>
 
