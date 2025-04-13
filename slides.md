@@ -699,14 +699,7 @@ npm version patch
 
 </v-click>
 
----
-layout: iframe-right
-src: https://regex101.com/r/vkijKf/1/
----
 
-::left::
-
-left
 
 ---
 layout: center
