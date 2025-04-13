@@ -199,7 +199,7 @@ layout: two-cols-header
 
 ::left::
 
-<img v-click src="/vue-pre-releases.png" scale-150 w-full mt--6>
+<img v-click src="/vue-pre-releases.png" scale-150 w-full mt--6 contrast-110>
 
 ::right::
 
@@ -242,15 +242,31 @@ glowX: 50
 glowY: 0
 ---
  
-# 什么是语义化版本(semver)?
 
-<v-clicks at="4">
+<h2 flex="~ col" text-center>
+<div text-center flex="~ col gap-2" transition duration-500 :class="$clicks < 2 ? 'translate-y-10' : ''">
+  <span
+    flex="~ gap-2 items-center justify-center"
+    text-hex-8080f2 transition duration-500 text-1.5em
+    :class="$clicks <  1 ? 'scale-150 translate-y' : ''"
+  >
+    <div i-simple-icons-semver />
+    什么是语义化版本<sub op-75>semver</sub>?
+  </span>
+  <span v-click op75 forward:delay-400 text-2xl>全称：semantic versioning </span>
+</div>
+</h2>
 
-- 全称：semantic versioning
-- **语义化版本** 不仅仅局限于前端开发，而是一个广泛应用于软件管理领域的一个概念
-- 一种为了确保软件版本号能够清晰、准确地传达软件变更信息而制定的版本**编号规则**。
+<div v-click>
 
-</v-clicks>
+**语义化版本** 不仅仅局限于前端开发，而是一个<div inline-block v-mark.orange.delay600="4">广泛应用于软件管理领域</div>的一个概念。
+
+</div>
+<div v-click>
+
+一种为了确保软件版本号能够清晰、准确地传达软件变更信息而制定的版本<div inline-block v-mark.orange.delay600="5">**编号规则**</div>。
+
+</div>
 
 <!--
 这套版本编号系统不仅适用于各种编程语言编写的应用程序，也同样适用于库、框架等软件包的版本控制。
