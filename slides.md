@@ -22,9 +22,7 @@ drawings:
 transition: fade-out
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
-# open graph
-# seoMeta:
-#  ogImage: https://cover.sli.dev
+glowSeed: 4
 ---
 
 # 语义化版本(semver)知识分享
@@ -40,14 +38,43 @@ Long Mo
   <div text-sm opacity-50>20250412</div>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+---
+layout: intro
+glowSeed: 15
+glowOpacity: 0.3
+class: pl-25
+---
+  
+# Long Mo
+
+<div class="[&>*]:important-leading-10 opacity-80">
+
+Core team member of web开发组<br>
+Maintainer of AI基础设施基座<br>
+Working at HikVision<br>
+
+</div>
+
+<div my-10 w-min flex="~ gap-1" items-center justify-center>
+
+  <div i-ri-github-line op50 ma text-xl ml4/>
+  <div><a href="https://github.com/long36708" target="_blank" class="border-none! font-300">long36708</a></div>
+
+  <div i-ri-bilibili-line op50 ma text-xl ml4/>
+
+</div>
+
+<img src="https://pic1.imgdb.cn/item/67e7ed500ba3d5a1d7e67de2.jpg" rounded-full w-35 abs-tr mt-32 mr-30 />
+
+<div flex="~ gap2">
+
+</div>
 
 ---
 layout: center
+glow: bottom
 ---
-   
+
 # 引言
 
 <div grid="~ cols-[1fr_max-content_1fr] gap-4" mt2>
@@ -86,26 +113,25 @@ layout: center
 </v-clicks>
 
 ---
-layout: center
----
-    
-<div grid="~ cols-2 gap-10" mt4>
-<div v-click>
+
+<div grid="~ cols-[1fr_max-content_1fr] gap-4"  mt4 >
+
+<div flex="~ col items-center justify-center" v-click>
  <h2>  语义化版本</h2>
  <div op50 font-serif italic mt--1> Semantic Versioning</div>
 </div>
 
-<div v-click="3" i-streamline-not-equal-sign></div>
+<div v-click="3" i-streamline-not-equal-sign mt-4></div>
 
-<div v-click="2">
+<div flex="~ col items-center justify-center"  v-click="2">
+
 <h2>  依赖版本</h2>
-<div  op50 font-serif italic mt--1> Dependency Versio
-</div>
-</div>
-
+<div  op50 font-serif italic mt--1> Dependency Version</div>
 </div>
 
-<img v-click="4" src="/dependency-version.png" w-360 my2 rounded absolute top-8 right-14/>
+</div>
+
+<img v-click="4" src="/dependency-version.png" my2 rounded absolute top-48 w="80%" left-30/>
 
 <v-click at="5">
 
@@ -115,14 +141,13 @@ layout: center
 
 <div v-click="6"> 版本范围</div>
 
-
 ---
 transition: fade-out
 layout: center
 glowX: 50
 glowY: 0
 ---
-     
+      
 # 什么是语义化版本(semver)?
 
 <v-clicks at="4">
@@ -145,7 +170,7 @@ glowY: 0
 layout: quote
 class: text-center
 ---
-   
+    
 # 为什么要使用语义化版本?
 
 ---
@@ -157,7 +182,7 @@ level: 2
 
 - 语义化版本是为了解决版本管理中存在的一些问题，
 
-- 比如版本号递增，版本号冲突，版本号不兼容等,
+- 比如`版本号递增`，`版本号冲突`，`版本号不兼容`等,
 
 - 从而提高软件项目的可维护性、依赖管理和用户信任度
 
@@ -180,15 +205,15 @@ layout: iframe
 url: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#dependencies
 scale: 0.6
 ---
-  
+     
 -
 
 
 ---
 layout: default
-layoutClass: important-p20
+layoutClass: important-p20 
 ---
-
+  
 # 版本范围 <sub op-50>Version Range</sub>
 
 <div grid="~ cols-2 gap-4" >
@@ -230,8 +255,8 @@ layout: center
 <div v-click='3' class="i-emojione-question-mark text-5xl rotate-15"  />
 </div>
 
-</div>
 
+</div>
 
 ---
 layout: two-cols-header
@@ -264,12 +289,13 @@ node_modules
 ```
 
 ---
+
   
 ## case 2
 
 vue 3.5.13  ->  3.5.14 -> 3.5.15-beta.1
 
-```json
+```json {*|2}
 {
   "dependencies": {
     "vue": "^3.5.13"
@@ -297,7 +323,7 @@ node_modules
 layout: center
 class: text-center
 ---
-  
+         
 ## 什么是最新版本？
 
 默认情况下，npm publish 会将新版本标记为 latest 标签，除非指定了其他标签
@@ -313,7 +339,7 @@ npm publish --tag next
 ---
 layout: default
 --- 
- 
+  
 # 不稳定版本
 
 <div v-click mb-4> 除了x.y.z ,带任意后缀的版本号称为不稳定版本 </div>
@@ -340,6 +366,7 @@ vue 3.5.14  -> 3.5.15-beta.1(不稳定版本)
 
 
 ---
+
  
 # case 2
 
@@ -401,6 +428,8 @@ layout: center
 
 ---
 layout: default
+glowX: 30
+glowY: 20
 ---
 
 # case 4
@@ -435,9 +464,10 @@ node_modules
 
 > ^不是锁的主版本吗？0.30.0 明明就满足规则，这又是为什么呢？
 
-
 ---
 layout: center
+glowX: 50
+glowY: 120
 ---
 
 # 不稳定版本 
@@ -459,12 +489,11 @@ layout: center
   
 </v-click>
 
-
 ---
 layout: center
 class: text-center
 ---
- 
+  
 # case 4
 
 <div flex="~ cols-[max-content_1fr]" class="text-xl">
@@ -502,23 +531,29 @@ class: text-center
 
 ---
 layout: center
-class: text-center
+class: text-left
 ---
 
-# Epoch Semantic Versioning 纪元语义化版本
+# Epoch Semantic Versioning 
 
+## 纪元语义化版本
+
+<div w-100>
 ```shell
 {EPOCH * 1000 + MAJOR}.MINOR.PATCH
 ```
+</div>
 
-> 例如，UnoCSS 若有个巨大重构，将从 v0.65.3 过渡到 v65.3.0（在 EPOCH 为 0 的情况下）。
+<img src="https://antfu.me/avatar.png" rounded-full w-35 abs-tr mt-20 mr-30 />
 
-> 之后，补丁版本将变为 v65.3.1，功能版本将变为 v65.4.0。
-
-> 如果引入了一些影响边缘情况的微小不兼容更改，我可以将其升级到 v66.0.0 以提醒用户潜在影响
-> 如果对核心进行重大改革，可以直接跳转到 v1000.0.0 来标志着新时代的到来并发布重大公告。
+- 例如，UnoCSS 若有个巨大重构，将从 v0.65.3 过渡到 v65.3.0（在 EPOCH 为 0 的情况下）。
+- 之后，补丁版本将变为 v65.3.1，功能版本将变为 v65.4.0。
+- 如果引入了一些影响边缘情况的微小不兼容更改，我可以将其升级到 v66.0.0 以提醒用户潜在影响
+-  如果对核心进行重大改革，可以直接跳转到 v1000.0.0 来标志着新时代的到来并发布重大公告。
 
 <div v-click>
+
+Anthony Fu 
 
 https://antfu.me/posts/epoch-semver
 
@@ -527,7 +562,7 @@ https://antfu.me/posts/epoch-semver
 ---
 layout: two-cols
 ---
-
+ 
 # npm version
 
 <div w-80>
@@ -553,9 +588,10 @@ npm version patch
 
 # bumpp
 
+<repo name="antfu-collective/bumpp" />
+
 增加版本号等的交互式 CLI
 
-https://github.com/antfu-collective/bumpp
 
 ![](/bumpp.png){.w-90.contrast-110}
 
