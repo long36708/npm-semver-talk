@@ -178,7 +178,7 @@ transition: fade-out
 - 每一次增加高位的版本，低位的都要清零
     - 1.8.2 -> 1.9.0
     - 1.8.2 -> 2.0.0
-  
+
 > 1.2.0.1 不是一个有效的语义化版本
 
 </v-clicks>
@@ -259,12 +259,13 @@ glowY: 0
 
 <div v-click>
 
-**语义化版本** 不仅仅局限于前端开发，而是一个<div inline-block v-mark.orange.delay600="4">广泛应用于软件管理领域</div>的一个概念。
+ 语义化版本不仅仅局限于前端开发，而是一个<div inline-block v-mark.orange.delay600="4">广泛应用于软件管理领域</div>的一个概念。
 
 </div>
+
 <div v-click>
 
-一种为了确保软件版本号能够清晰、准确地传达软件变更信息而制定的版本<div inline-block v-mark.orange.delay600="5">**编号规则**</div>。
+它是一种为了确保软件版本号能够清晰、准确地传达软件变更信息而制定的版本<span inline-block v-mark.orange.delay600="5">**编号规则**</span>。
 
 </div>
 
@@ -290,12 +291,14 @@ level: 2
   
 # 作用
 
-- 语义化版本是为了解决版本管理中存在的一些问题，
-
-- 比如`版本号递增`，`版本号冲突`，`版本号不兼容`等,
-
-- 从而提高软件项目的可维护性、依赖管理和用户信任度
-
+- 一方面，对于软件开发者来说：
+  - 语义化版本是为了解决版本管理中存在的一些问题  
+  - 比如`版本号递增`，`版本号冲突`，`版本号不兼容`等
+  - 从而提高软件项目的可维护性、依赖管理和用户信任度
+- 另一方面，对于使用者来说：
+  - 遵循语义化版本号规则有利于使用者理解代码库的升级修改
+- 共同遵循语义化版本号能使开发者和使用者共同获益。
+  
 <!--
 清晰传达变更的性质：通过主版本号、次版本号和修订号的变化，可以明确地向用户传达本次更新是包含重大更改（可能需要用户调整自己的代码）、新增功能还是仅仅修复了一些bug。这有助于用户快速了解升级可能带来的影响。
 
@@ -314,6 +317,7 @@ level: 2
 layout: iframe
 url: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#dependencies
 scale: 0.6
+glowSize: 0
 ---
      
 -
@@ -334,11 +338,13 @@ npm install --save vue
 
 </div>
 
-<Arrow  v-click x1="200" y1="150" x2="200" y2="360" />
-<div v-click class='abs left-200 top-200'> latest </div>
-<div v-click abs x-200 y-300> ^3.5.13 </div>
+<div class="flex-col" >
+<Arrow  v-click x1="200" y1="150" x2="200" y2="300" />
+<div v-click class="position-absolute" left-30 top-50> latest </div>
+<div v-click class="position-absolute" left-30 top-60> ^3.5.13 </div>
+</div>
 
-<div grid="~ cols-2 gap-4" mt-40>
+<div grid="~ cols-2 gap-4" mt-40 v-click>
 
 ```json
 {
@@ -379,7 +385,7 @@ layout: two-cols-header
 
  vue 3.5.13  ->  3.5.14 
 
-
+<v-click>
 ```json
 {
 	"dependencies": {
@@ -387,12 +393,16 @@ layout: two-cols-header
 	}
 }
 ```
+</v-click>
 
-
+<v-click>
 
 ```shell
 npm install
 ```
+</v-click>
+
+<v-click>
 
 不考虑lock文件的情况下
 
@@ -400,7 +410,7 @@ npm install
 node_modules
  └── vue@3.5.14
 ```
-
+</v-click>
 ---
 
   
@@ -408,22 +418,29 @@ node_modules
 
 vue 3.5.13  ->  3.5.14 -> 3.5.15-beta.1
 
-```json {*|2}
+<v-click>
+```json 
 {
   "dependencies": {
     "vue": "^3.5.13"
   }
 }
 ```
+</v-click>
 
+<v-click>
 ```shell
 npm install
 ```
+</v-click>
 
-```text
+<v-click>
+```text 
 node_modules
  └── vue@3.5.15-beta.1
 ```
+</v-click>
+<v-click>
 
 不会！！！
 
@@ -431,23 +448,31 @@ node_modules
 node_modules
  └── vue@3.5.14
 ```
-
+</v-click>
 ---
 layout: center
 class: text-center
 ---
          
 ## 什么是最新版本？
+<v-click>
 
 默认情况下，npm publish 会将新版本标记为 latest 标签，除非指定了其他标签
+</v-click>
+<v-click>
 
 > 在发布新版本时，可以直接通过 --tag 参数指定标签，而不是默认的 latest 标签。
+> 
 > 这对于发布预发布版本（如 alpha、beta）非常有用。
+> 
 > 发布一个带有 next 标签的版本 
+</v-click>
 
+<v-click>
 ```shell
 npm publish --tag next
 ```
+</v-click>
 
 ---
 layout: default
@@ -484,27 +509,34 @@ vue 3.5.14  -> 3.5.15-beta.1(不稳定版本)
 # case 2
 
 vue 3.5.13  ->  3.5.14 -> 3.5.15-beta.1(不稳定版本)
+<v-click>
 
-```json
+```json 
 {
   "dependencies": {
     "vue": "^3.5.15-beta.1"
   }
 }
 ```
+</v-click>
 <br/>
+
+<v-click>
 
 ```shell
 npm install
 ```
+</v-click>
+
 <br/>
-<br/>
-<br/>
+
+<v-click>
 
 ```text
 node_modules
  └── vue@3.5.15-beta.1
 ```
+</v-click>
 
 ---
 
@@ -512,6 +544,7 @@ node_modules
 
 vue 3.5.13  ->  3.5.14 -> 3.5.15-beta.1(不稳定版本) -> 3.5.15-beta.2(beta版本)
 
+<v-click>
 ```json
 {
   "dependencies": {
@@ -519,24 +552,33 @@ vue 3.5.13  ->  3.5.14 -> 3.5.15-beta.1(不稳定版本) -> 3.5.15-beta.2(beta�
   }
 }
 ```
+</v-click>
 
+<br/>
+
+<v-click>
 ```shell
 npm install
 ```
+</v-click>
 
+<br/>
+<v-click>
 ```text
 node_modules
  └── vue@3.5.15-beta.2
 ```
 
-> 因为依赖方已经在 `package.json` 中指定 `beta` 版本，即允许安装不稳定版本了
+<br/>
 
+> 因为依赖方已经在 `package.json` 中指定 `beta` 版本，即允许安装不稳定版本了
+</v-click>
 
 ---
 layout: center
 ---
 
-# 完全理解 <div v-click i-emojione-exclamation-question-mark inline-block /> 
+# 完全理解 <span v-click i-emojione-exclamation-question-mark inline-block /> 
 
 
 ---
@@ -549,15 +591,17 @@ glowY: 20
 
 <div flex="~ cols-[max-content_1fr]" class="text-xl">
 
-<div i-fluent-emoji-flat-package/>
+<div class="flex">
+<div i-fluent-emoji-flat-package inline-block pr-2/>
 
-<div>
+<div inline-block>
  axios 0.21.1 -> 0.30.0
 </div>
+</div>
 
 </div>
 
-
+<v-click>
 ```json
 {
   "dependencies": {
@@ -565,11 +609,17 @@ glowY: 20
   }
 }
 ```
+</v-click>
 
+<br/>
+<v-click>
 ```shell
 npm install
 ```
+</v-click>
 
+<br/>
+<v-click>
 ```text
 node_modules
  └── axios@0.21.1
@@ -577,10 +627,13 @@ node_modules
 
 > ^不是锁的主版本吗？0.30.0 明明就满足规则，这又是为什么呢？
 
+</v-click>
+
 ---
 layout: center
 glowX: 50
 glowY: 120
+glowFollow: false
 ---
 
 # 不稳定版本 
@@ -609,24 +662,18 @@ class: text-center
 
 # case 4 
 
-<div flex="~ cols-[max-content_1fr]" class="text-xl">
 
-<div i-fluent-emoji-flat-package/>
 
+<div  class="text-xl flex-col">
+<div flex>
+  <div i-fluent-emoji-flat-package/>
+
+  <div>
+  axios 0.21.1 -> 0.30.0
+  </div>
+</div>
+<br/>
 <div>
- axios 0.21.1 -> 0.30.0
-</div>
-
-<div flex="~ col items-center justify-center">
-
- <div v-click class='absolute left-95 top-76' > latest </div>
- <div v-click class='absolute left-95 top-68'> ^3.5.14 </div>
-
- <Arrow  v-click x1="340" y1="350" x2="480" y2="350" />
-
-</div>
-<div mt-40/>
-
 ```json
 {
   "dependencies": {
@@ -635,7 +682,7 @@ class: text-center
 }
 ```
 </div>
-
+</div>
 
 <div class="flex flex-col">
 
@@ -656,7 +703,8 @@ class: text-left
 
 ## 纪元语义化版本
 
-<div w-100>
+<div w-100 v-click>
+
 ```shell
 {EPOCH * 1000 + MAJOR}.MINOR.PATCH
 ```
@@ -664,10 +712,13 @@ class: text-left
 
 <img src="https://antfu.me/avatar.png" rounded-full w-35 abs-tr mt-20 mr-30 />
 
+<v-clicks>
+
 - 例如，UnoCSS 若有个巨大重构，将从 v0.65.3 过渡到 v65.3.0（在 EPOCH 为 0 的情况下）。
 - 之后，补丁版本将变为 v65.3.1，功能版本将变为 v65.4.0。
 - 如果引入了一些影响边缘情况的微小不兼容更改，我可以将其升级到 v66.0.0 以提醒用户潜在影响
 -  如果对核心进行重大改革，可以直接跳转到 v1000.0.0 来标志着新时代的到来并发布重大公告。
+</v-clicks>
 
 <div v-click>
 
