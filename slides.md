@@ -74,7 +74,7 @@ Working at HikVision<br>
 layout: center
 glow: bottom
 glowX: 50
-glowY: 120
+glowY: 40
 ---
 
 # 引言
@@ -116,8 +116,260 @@ glowY: 120
 
   </div>
 </div>
-<!-- 上方内容 end-->
 
+<!--
+我们使用的包管理器，如 npm 、 pnpm 和 yarn ，都假设 npm 上的每个包都遵循 SemVer。
+-->
+
+---
+transition: fade-out
+layout: center
+glowX: 50
+glowY: 0
+---
+
+<h2 flex="~ col" text-center>
+<div text-center flex="~ col gap-2" transition duration-500 :class="$clicks < 2 ? 'translate-y-10' : ''">
+  <span
+    flex="~ gap-2 items-center justify-center"
+    text-hex-8080f2 transition duration-500 text-1.5em
+    :class="$clicks <  1 ? 'scale-150 translate-y' : ''"
+  >
+    <div i-simple-icons-semver />
+    什么是语义化版本<sub op-75>semver</sub>?
+  </span>
+  <span v-click op75 forward:delay-400 text-2xl>全称：semantic versioning </span>
+</div>
+</h2>
+
+<div v-click>
+
+ 语义化版本不仅仅局限于前端开发，而是一个<div inline-block v-mark.orange.delay600="4">广泛应用于软件管理领域</div>的一个概念。
+
+</div>
+
+<div v-click>
+
+它是一种版本编号系统，通过<span inline-block v-mark.orange.delay600="5">特定的规则</span>为软件版本号赋予意义。
+
+</div>
+
+<!--
+这套版本编号系统不仅适用于各种编程语言编写的应用程序，也同样适用于库、框架等软件包的版本控制。
+
+无论是前端JavaScript库、后端服务、移动应用还是桌面软件，任何类型的软件项目都可以采用语义化版本来规范其发布周期和版本号的递增逻辑，
+
+从而促进项目的可持续维护以及与其他软件系统的兼容性和依赖性管理。
+-->
+
+---
+layout: quote
+class: text-center
+---
+    
+# 为什么要使用语义化版本?
+
+---
+transition: slide-up
+level: 2
+---
+
+# 作用
+
+<v-click>
+
+ #### 它是为了确保软件版本号能够<span inline-block v-mark.orange.delay600="2">**清晰、准确地传达软件变更信息**</span>而制定的版本**编号规则**。
+
+</v-click>
+<br/>
+<v-clicks depth="2" at="3">
+
+- 一方面，对于软件开发者来说：
+  - 语义化版本是为了解决版本管理中存在的一些问题  
+  - 比如`版本号如何递增`，`解决版本号冲突`，`处理版本号不兼容`等
+  - 从而提高软件项目的可维护性、依赖管理和用户信任度
+- 另一方面，对于使用者来说：
+  - 遵循语义化版本号规则有利于使用者理解代码库的升级修改
+
+</v-clicks>
+
+<v-click at="10">
+
+语义化版本规范是 维护者与用户之间确保升级期间兼容性和稳定性的契约。
+
+共同遵循语义化版本号能使开发者和使用者共同获益。
+
+</v-click>
+
+<!--
+清晰传达变更的性质：通过主版本号、次版本号和修订号的变化，可以明确地向用户传达本次更新是包含重大更改（可能需要用户调整自己的代码）、新增功能还是仅仅修复了一些bug。这有助于用户快速了解升级可能带来的影响。
+
+简化依赖管理：在复杂的软件生态系统中，一个项目往往依赖于多个库或包。语义化版本允许开发者指定兼容版本范围，例如^1.2.3表示接受任何不改变主版本号的更新。这有助于自动化工具选择合适的依赖版本，减少因依赖问题导致的冲突或错误。
+
+提升用户信任度：遵循统一的版本编号规则可以帮助用户建立对项目的信任。当用户知道项目严格遵守语义化版本控制时，他们能更有信心地进行升级操作，因为他们可以根据版本号预判升级的风险和工作量。
+
+促进协作：在一个团队或者开源社区内，使用语义化版本可以帮助所有参与者更好地理解项目的进展和变化。它提供了一种标准化的语言来描述软件的发展状态，有助于沟通和协调工作。
+
+支持自动化流程：许多CI/CD（持续集成/持续部署）流水线和依赖管理系统都支持基于语义化版本的工作流。这意味着可以更容易实现自动化测试、构建和发布过程，进一步加速开发周期。
+
+增强生态系统的稳定性：在整个软件生态系统中广泛采用语义化版本有助于保持整个生态系统的稳定性和健康性。它减少了由于不兼容更新导致的问题，促进了不同软件之间的互操作性和长期维护。
+
+语义化版本规范是 维护者与用户之间确保升级期间兼容性和稳定性的契约。
+作为用户，你无法总是通过查看变更日志来了解 v2.3.4 和 v2.3.5 之间发生了什么。但通过查看数字，你可以推断这是一个旨在修复错误的补丁版本，升级应该是安全的
+-->
+
+---
+layout: iframe-left
+url: https://semver.org/lang/zh-CN/
+transition: fade-out
+---
+
+## 语义化版本控制规范
+
+<div mt-4/>
+
+<v-clicks depth="2">
+
+- `X.Y.Z` 
+  - 主版本号
+  - 次版本号
+  - 修订版本号
+- 任何修改都必须以新版本发行
+  - 版本只能增加，不能减少
+  - 1.8.9 -> 1.8.10
+- x一般从0开始，表示还未发布的版本
+    - 一旦发布正式版，则需要[将主版本改为1](https://docs.npmjs.com/about-semantic-versioning) 
+- 每一次增加高位的版本，低位的都要清零
+    - 1.8.2 -> 1.9.0
+    - 1.8.2 -> 2.0.0
+</v-clicks>
+
+<v-click>
+
+> `release`版本为正式版或稳定版，有些也叫做stable、GA版，即软件的最终发行版
+</v-click>
+
+
+---
+layout: two-cols-header
+---
+
+# 先行版本（预发布版本）
+
+<v-clicks depth="2">
+
+- 正式版本发布之前的一些试验性或不完全稳定的版本，用来收集反馈或者进行公开测试
+- 通过在版本号后添加一个连字符（-）以及一系列点分隔的标识符来表示，这些标识符必须由 ASCII 字母数字和连字符组成 [0-9A-Za-z-]，并且不允许为空。
+- 常见字母版本号为 `canary`、`dev`、`alpha`、`beta`、`rc`
+- 先行版本又称"预发布版本"或"不稳定版本",一般不可用于生产环境
+
+  
+</v-clicks>
+
+::left::
+
+<img v-click src="/vue-pre-releases.png" scale-150 w-full mt-18 contrast-110>
+
+::right::
+
+<img v-click src="/react-pre-releases.png" scale-150 w-full mt-18>
+
+<!--
+rc: 候选版本 Release Candidate
+-->
+
+---
+
+# 语义化版本号比较时的基本原则
+
+<v-clicks>
+
+- 按顺序逐个标识符比较
+    - 主版本号优先 > 次版本号其次 >  修订号最后
+- 对于带有预发布标识（如 -alpha, -beta 等）的版本，其比较规则稍微复杂一些。
+  - 区别于正式版本，预发布版本被认为不如正式版本稳定，
+  - 因此按照 SemVer 规则，任何带有预发布标签的版本都被视为低于相同版本号的正式版本。
+  - 在预发布标识中,数字与非数字标识符的比较
+    - 如果一个是纯数字而另一个包含非数字字符，则纯数字被视为小于非数字标识符。
+    - 如果两者都是纯数字，则数值较大的视为更大；
+    - 如果是非数字，则按字典顺序比较。
+</v-clicks>
+<div v-click scale-150 mx-20 mt-4 px-20>
+
+```
+1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta 
+< 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.10
+< 1.0.0-rc.1 < 1.0.0 < 2.0.0-alpha 
+```
+
+</div>
+
+<div mt-6 text-red mx-10 v-click> 注意这里的 .10 实际上是比 .2 更大的，尽管按字典顺序看起来不是这样,如果要在代码或脚本中比较语义化版本号，可以使用像   <b text-yellow>semver</b> 这样的库来进行比较</div>
+
+<!--
+首先比较主版本号。如果一个版本的主版本号大于另一个版本的主版本号，则该版本被视为更大。
+
+如果两个版本的主版本号相同，则比较次版本号。次版本号较大的版本被视为更大。
+
+如果两个版本的主版本号和次版本号都相同，则比较修订号。修订号较大的版本被视为更大。
+-->
+
+---
+
+# 小测试
+
+<v-clicks depth="2">
+
+- `5.0.0-0` 是一个有效的语义化版本吗？
+  - 是
+- `1.2.0.1` 是一个有效的语义化版本吗？
+  - 否
+- `v1.2.3` 是一个有效的语义化版本号吗？
+  - 否
+  - 但是，在语义化版本号之前增加前缀 `v` 是用来表示版本号的常用做法
+  - 在版本控制系统中，将 `version` 缩写为 `v` 是很常见的。
+    - 比如：git tag v1.2.3 -m "Release version 1.2.3" 中
+    - `v1.2.3` 表示标签名称，而 `1.2.3`是语义化版本号。
+</v-clicks>
+
+<div mt-4/>
+<v-click>
+
+> 推荐一个正则表达式用以检查语义化版本号的正确性
+> 
+> https://regex101.com/r/vkijKf/1/
+>
+> 验证语义化版本是否符合规范或者比较他们之间的大小关系
+> 
+> 推荐 npm 的 https://github.com/npm/node-semver
+</v-click>
+
+
+<img v-click.hide=5 src='/semver-demo.png' w100 rounded-md class="position-absolute top-22 right-25"/>
+
+<v-click at=6>
+
+<img src='/semver-coerce.png' w100 rounded-md class="position-absolute top-22 right-25"/>
+</v-click>
+
+<v-click at=8>
+
+<img src='/node-semver.png' w100  class="position-absolute top-10 right-25"/>
+</v-click>
+
+---
+layout: iframe
+url: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#dependencies
+scale: 0.8
+glowSize: 0
+glowX: 1
+glowFollow: false
+---
+     
+-
+
+---
+glowFollow: false
 ---
 
 <div grid="~ cols-[1fr_max-content_1fr] gap-4"  mt4 >
@@ -148,184 +400,26 @@ glowY: 120
 </v-click>
 
 ---
-layout: fact
-glow: left
----
-
-# 什么是`语义化版本`?{.important-text-3em}
-
----
-layout: iframe-left
-url: https://semver.org/lang/zh-CN/
-transition: fade-out
----
-
-## 语义化版本控制规范
-
-<div mt-4/>
-
-<v-clicks depth="2">
-
-- `X.Y.Z` 
-  - 主版本号
-  - 次版本号
-  - 修订版本号
-- 任何修改都必须以新版本发行
-  - 版本只能增加，不能减少
-  - 1.8.9 -> 1.8.10
-- x一般从0开始，表示还未发布的版本
-    - 一旦发布正式版，则需要[将主版本改为1](https://docs.npmjs.com/about-semantic-versioning) 
-- 每一次增加高位的版本，低位的都要清零
-    - 1.8.2 -> 1.9.0
-    - 1.8.2 -> 2.0.0
-
-> 1.2.0.1 不是一个有效的语义化版本
-
-</v-clicks>
-
----
-layout: two-cols-header
----
-
-# 预发布版本
-
-<v-clicks>
-
-- 预发布版本（一般为希腊字母版本或日期版本号）
-- 常见字母版本号为 `canary`、`dev`、`alpha`、`beta`、`rc`、`release`
-- 预发布版本又称"不稳定版本",一般不可用于生产环境
-  
-</v-clicks>
-
-::left::
-
-<img v-click src="/vue-pre-releases.png" scale-150 w-full mt--6 contrast-110>
-
-::right::
-
-<img v-click src="/react-pre-releases.png" scale-150 w-full >
-
-
----
-
-# 语义化版本号比较时的基本原则
-
-<v-clicks>
-
-- 主版本号优先：首先比较主版本号。如果一个版本的主版本号大于另一个版本的主版本号，则该版本被视为更大。
-- 次版本号其次：如果两个版本的主版本号相同，则比较次版本号。次版本号较大的版本被视为更大。
-- 修订号最后：如果两个版本的主版本号和次版本号都相同，则比较修订号。修订号较大的版本被视为更大。
-
-- 对于带有预发布标识（如 -alpha, -beta 等）的版本，其比较规则稍微复杂一些。
-  - 预发布版本总是被认为小于没有预发布标识的相同版本。
-  - 在预发布标识中，数字部分会被视为数值进行比较。
-  
-</v-clicks>
-<div v-click scale-150 mx-20 mt-8 px-20>
-
-```
-1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta 
-< 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.10
-< 1.0.0-rc.1 < 1.0.0 < 2.0.0-alpha 
-```
-
-</div>
-
-<div mt-6 text-red mx-10 v-click> 注意这里的 .10 实际上是比 .2 更大的，尽管按字典顺序看起来不是这样,如果要在代码或脚本中比较语义化版本号，可以使用像   <b text-yellow>semver</b> 这样的库来进行比较</div>
-
-
-
----
-transition: fade-out
-layout: center
-glowX: 50
-glowY: 0
----
- 
-
-<h2 flex="~ col" text-center>
-<div text-center flex="~ col gap-2" transition duration-500 :class="$clicks < 2 ? 'translate-y-10' : ''">
-  <span
-    flex="~ gap-2 items-center justify-center"
-    text-hex-8080f2 transition duration-500 text-1.5em
-    :class="$clicks <  1 ? 'scale-150 translate-y' : ''"
-  >
-    <div i-simple-icons-semver />
-    什么是语义化版本<sub op-75>semver</sub>?
-  </span>
-  <span v-click op75 forward:delay-400 text-2xl>全称：semantic versioning </span>
-</div>
-</h2>
-
-<div v-click>
-
- 语义化版本不仅仅局限于前端开发，而是一个<div inline-block v-mark.orange.delay600="4">广泛应用于软件管理领域</div>的一个概念。
-
-</div>
-
-<div v-click>
-
-它是一种为了确保软件版本号能够清晰、准确地传达软件变更信息而制定的版本<span inline-block v-mark.orange.delay600="5">**编号规则**</span>。
-
-</div>
-
-<!--
-这套版本编号系统不仅适用于各种编程语言编写的应用程序，也同样适用于库、框架等软件包的版本控制。
-
-无论是前端JavaScript库、后端服务、移动应用还是桌面软件，任何类型的软件项目都可以采用语义化版本来规范其发布周期和版本号的递增逻辑，
-
-从而促进项目的可持续维护以及与其他软件系统的兼容性和依赖性管理。
--->
-
----
-layout: quote
-class: text-center
----
-    
-# 为什么要使用语义化版本?
-
----
-transition: slide-up
-level: 2
----
-  
-# 作用
-
-- 一方面，对于软件开发者来说：
-  - 语义化版本是为了解决版本管理中存在的一些问题  
-  - 比如`版本号递增`，`版本号冲突`，`版本号不兼容`等
-  - 从而提高软件项目的可维护性、依赖管理和用户信任度
-- 另一方面，对于使用者来说：
-  - 遵循语义化版本号规则有利于使用者理解代码库的升级修改
-- 共同遵循语义化版本号能使开发者和使用者共同获益。
-  
-<!--
-清晰传达变更的性质：通过主版本号、次版本号和修订号的变化，可以明确地向用户传达本次更新是包含重大更改（可能需要用户调整自己的代码）、新增功能还是仅仅修复了一些bug。这有助于用户快速了解升级可能带来的影响。
-
-简化依赖管理：在复杂的软件生态系统中，一个项目往往依赖于多个库或包。语义化版本允许开发者指定兼容版本范围，例如^1.2.3表示接受任何不改变主版本号的更新。这有助于自动化工具选择合适的依赖版本，减少因依赖问题导致的冲突或错误。
-
-提升用户信任度：遵循统一的版本编号规则可以帮助用户建立对项目的信任。当用户知道项目严格遵守语义化版本控制时，他们能更有信心地进行升级操作，因为他们可以根据版本号预判升级的风险和工作量。
-
-促进协作：在一个团队或者开源社区内，使用语义化版本可以帮助所有参与者更好地理解项目的进展和变化。它提供了一种标准化的语言来描述软件的发展状态，有助于沟通和协调工作。
-
-支持自动化流程：许多CI/CD（持续集成/持续部署）流水线和依赖管理系统都支持基于语义化版本的工作流。这意味着可以更容易实现自动化测试、构建和发布过程，进一步加速开发周期。
-
-增强生态系统的稳定性：在整个软件生态系统中广泛采用语义化版本有助于保持整个生态系统的稳定性和健康性。它减少了由于不兼容更新导致的问题，促进了不同软件之间的互操作性和长期维护。
--->
-
----
-layout: iframe
-url: https://docs.npmjs.com/cli/v11/configuring-npm/package-json#dependencies
 scale: 0.6
-glowSize: 0
+glowSize: 0.6
 ---
-     
--
+
+## semver 中的符号
+
+| 符号 | 描述 | 示例 | 解释 |
+| --- | --- | --- | --- |
+| `^` | 表示当前版本号大于等于该版本号，且小于下一个主版本号。适用于同一个主版本号中的所有更新（包括次版本和修订版）。 | `^3.2.12` | 当前版本号需大于等于 `3.2.12` 但小于 `4.0.0`。 |
+| `~` | 表示同一主版本号和次版本号中，不小于指定版本号的版本号。适用于同一主版本和次版本下的修订版更新。 | `~3.2.12` | 当前版本号需大于等于 `3.2.12` 但小于 `3.3.0`。 |
+| `>`, `<`, `<=`, `>=` | 分别表示大于、小于、小于等于、大于等于指定版本号。用于指定一个具体的版本号范围。 | `>=1.2.0` | 只要版本大于或等于 `1.2.0` 即可安装，例如最新版本是 `2.1.0`，则会安装 `2.1.0`。 |
+| `=` | 精确匹配某个版本号。通常可以省略等号直接写版本号。如果 npm 仓库中没有该版本，则安装时会报错。 | `=2.1.0` 或 `2.1.0` | 必须是这个确切版本号才能被安装。 |
+| `x`, `*` | 匹配任意版本号。可用于指代主版本、次版本或修订版本号中的任意值。 | `3.x`, `3.*` | 当前版本号需大于等于 `3.0.0` 但小于 `4.0.0`。 |
 
 
 ---
 layout: default
 layoutClass: important-p20
+glowX: 20
+glowY: 20
 ---
 
 # 版本范围 <sub op-50>Version Range</sub>
@@ -359,6 +453,8 @@ npm install --save vue
 
 ---
 layout: center
+glowX: 40
+glowY: 40
 ---
 
 <h2> 
@@ -375,17 +471,46 @@ layout: center
 
 
 </div>
+---
+layout: center
+class: text-center
+glowX: 50
+glowY: 40
+---
+         
+## 什么是最新版本？
+<v-click>
+
+默认情况下，npm publish 会将新版本标记为 latest 标签，除非指定了其他标签
+</v-click>
+<v-click>
+
+> 在发布新版本时，可以直接通过 --tag 参数指定标签，而不是默认的 latest 标签。
+> 
+> 这对于发布预发布版本（如 alpha、beta）非常有用。
+> 
+> 发布一个带有 next 标签的版本 
+</v-click>
+
+<v-click>
+```shell
+npm publish --tag next
+```
+</v-click>
+
 
 ---
 layout: two-cols-header
+glowX: 30
+glowY: 50
 ---
-
 
 ## case 1
 
- vue 3.5.13  ->  3.5.14 
+ vue 3.5.13  ->  3.5.14 <v-click at=4> <span text-red> -> 4.0.0 </span></v-click>
 
 <v-click>
+
 ```json
 {
 	"dependencies": {
@@ -411,6 +536,25 @@ node_modules
  └── vue@3.5.14
 ```
 </v-click>
+
+<div mt4/>
+<v-click at=5>
+
+> 如果一个包发布了新的主版本 v4.0.0 ，如果你的指定范围是 ^3.5.13 ，你的包管理器不会安装它。
+>
+> 这可以防止意外的破坏性更改影响你的项目，直到你手动更新版本范围。
+
+</v-click>
+
+<!--
+如果一个包发布了新的主版本 v4.0.0 ，如果你的指定范围是 ^3.5.13 ，你的包管理器不会安装它。
+
+这可以防止意外的破坏性更改影响你的项目，直到你手动更新版本范围。
+-->
+
+---
+glowX: 30
+glowY: 50
 ---
 
   
@@ -419,6 +563,7 @@ node_modules
 vue 3.5.13  ->  3.5.14 -> 3.5.15-beta.1
 
 <v-click>
+
 ```json 
 {
   "dependencies": {
@@ -435,6 +580,7 @@ npm install
 </v-click>
 
 <v-click>
+
 ```text 
 node_modules
  └── vue@3.5.15-beta.1
@@ -449,33 +595,12 @@ node_modules
  └── vue@3.5.14
 ```
 </v-click>
----
-layout: center
-class: text-center
----
-         
-## 什么是最新版本？
-<v-click>
 
-默认情况下，npm publish 会将新版本标记为 latest 标签，除非指定了其他标签
-</v-click>
-<v-click>
-
-> 在发布新版本时，可以直接通过 --tag 参数指定标签，而不是默认的 latest 标签。
-> 
-> 这对于发布预发布版本（如 alpha、beta）非常有用。
-> 
-> 发布一个带有 next 标签的版本 
-</v-click>
-
-<v-click>
-```shell
-npm publish --tag next
-```
-</v-click>
 
 ---
 layout: default
+glowX: 30
+glowY: 50
 --- 
   
 # 不稳定版本
@@ -576,6 +701,8 @@ node_modules
 
 ---
 layout: center
+glowX: 50
+glowY: 40
 ---
 
 # 完全理解 <span v-click i-emojione-exclamation-question-mark inline-block /> 
@@ -602,6 +729,7 @@ glowY: 20
 </div>
 
 <v-click>
+
 ```json
 {
   "dependencies": {
@@ -631,8 +759,8 @@ node_modules
 
 ---
 layout: center
-glowX: 50
-glowY: 120
+glowX: 45
+glowY: 40
 glowFollow: false
 ---
 
@@ -658,11 +786,10 @@ glowFollow: false
 ---
 layout: center
 class: text-center
+glowX: 40
 ---
 
 # case 4 
-
-
 
 <div  class="text-xl flex-col">
 <div flex>
@@ -703,6 +830,14 @@ class: text-left
 
 ## 纪元语义化版本
 
+<v-click>
+
+- 人类对数字的感知是按对数字的尺度进行的。
+  - 我们倾向于将 v2.0 到 v3.0 看作是巨大的、划时代的变革
+  - 而 v125.0 到 v126.0 则显得微不足道
+  - 尽管两者在 SemVer 中都表示不兼容的 API 变更
+</v-click>
+
 <div w-100 v-click>
 
 ```shell
@@ -727,6 +862,11 @@ Anthony Fu
 https://antfu.me/posts/epoch-semver
 
 </div>
+
+<!--
+然而，人类对数字的感知是按对数字的尺度进行的。
+我们倾向于将 v2.0 到 v3.0 看作是巨大的、划时代的变革，而 v125.0 到 v126.0 则显得更加微不足道，尽管两者在 SemVer 中都表示不兼容的 API 变更
+-->
 
 ---
 layout: two-cols
@@ -771,6 +911,8 @@ npm version patch
 ---
 layout: center
 class: text-center
+glowX: 50
+glowY: 30
 ---
 
 # Thank You!
