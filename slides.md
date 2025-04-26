@@ -128,7 +128,7 @@ glowX: 50
 glowY: 0
 ---
 
-<h2 flex="~ col" text-center>
+<h3 flex="~ col" text-center>
 <div text-center flex="~ col gap-2" transition duration-500 :class="$clicks < 2 ? 'translate-y-10' : ''">
   <span
     flex="~ gap-2 items-center justify-center"
@@ -140,7 +140,7 @@ glowY: 0
   </span>
   <span v-click op75 forward:delay-400 text-2xl>全称：semantic versioning </span>
 </div>
-</h2>
+</h3>
 
 <div v-click>
 
