@@ -118,7 +118,12 @@ glowY: 40
   ```
 
   </div>
+  <div v-click absolute right-0 top-20>
+    <img src="/semver-important.png" alt="" width="600">
+  </div>
 </div>
+
+
 
 <!--
 我们使用的包管理器，如 npm 、 pnpm 和 yarn ，都假设 npm 上的每个包都遵循 SemVer。
@@ -308,7 +313,7 @@ rc: 候选版本 Release Candidate
 
 </div>
 
-<div mt-6 text-red mx-10 v-click> 注意这里的 .10 实际上是比 .2 更大的，尽管按字典顺序看起来不是这样,如果要在代码或脚本中比较语义化版本号，可以使用像   <b text-yellow>semver</b> 这样的库来进行比较</div>
+<div mt-6 text-red mx-10 v-click> 注意这里的 .10 实际上是比 .2 更大的，尽管按字典顺序看起来不是这样,如果要在代码或脚本中比较语义化版本号，可以使用像   <b text-yellow>node-semver</b> 这样的库来进行比较</div>
 
 <!--
 首先比较主版本号。如果一个版本的主版本号大于另一个版本的主版本号，则该版本被视为更大。
@@ -398,7 +403,7 @@ glowFollow: false
 <v-click at="5" >
 <div absolute right-45>
 
-`"包名":"版本范围"`
+`"包名":"版本范围"`  [版本范围](https://github.com/npm/node-semver?tab=readme-ov-file#ranges) 是一组比较器 ，用于指定满足该范围的版本
 
 </div>
 </v-click>
