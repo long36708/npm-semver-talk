@@ -60,11 +60,13 @@ Working at HikVision<br>
   <div i-ri-github-line op50 ma text-xl ml4/>
   <div><a href="https://github.com/long36708" target="_blank" class="border-none! font-300">long36708</a></div>
 
-  <div i-ri-bilibili-line op50 ma text-xl ml4/>
-
+  <div i-simple-icons-bloglovin op50 ma text-xl ml4/>
+  <div>
+        <a href="https://www.cnblogs.com/longmo666" target="_blank" class="border-none! font-300 flex w-[50px]">龙陌</a>
+  </div>
 </div>
 
-<img src="https://pic1.imgdb.cn/item/67e7ed500ba3d5a1d7e67de2.jpg" rounded-full w-35 abs-tr mt-32 mr-30 />
+<img src="/user-avatar.jpg" rounded-full w-35 abs-tr mt-32 mr-30 />
 
 <div flex="~ gap2">
 
@@ -84,9 +86,10 @@ glowY: 40
 <div flex="~ col items-center justify-center">
   <div v-click text-10em i-devicon-npm-wordmark/>
   <v-clicks at="4">
+   <div ml--22 leading-10> 什么是语义化版本？ </div>
    <div leading-10> 语义化版本和依赖版本的区别？ </div>
    <div ml-6 leading-10> ^1.0.0、 ~1.0.0、>=1.0.0有什么区别？</div>
-   <div leading-10>  指定版本和安装版本一定相同吗？ </div>
+   <div ml-2 leading-10>  指定版本和安装版本一定相同吗？ </div>
   </v-clicks>
 </div>
 <div v-click w-60 text-10em i-logos-pnpm/>
@@ -729,7 +732,9 @@ glowY: 20
 
 </div>
 
-<v-click>
+<v-click >
+
+<div text-align-left>
 
 ```json
 {
@@ -738,6 +743,7 @@ glowY: 20
   }
 }
 ```
+</div>
 </v-click>
 
 <br/>
@@ -801,7 +807,7 @@ glowX: 40
   </div>
 </div>
 <br/>
-<div>
+<div style="text-align: left">
 ```json
 {
   "dependencies": {
@@ -846,7 +852,7 @@ class: text-left
 ```
 </div>
 
-<img src="https://antfu.me/avatar.png" rounded-full w-35 abs-tr mt-20 mr-30 />
+<img src="/antfu-avatar.png" rounded-full w-35 abs-tr mt-20 mr-30 />
 
 <v-clicks>
 
